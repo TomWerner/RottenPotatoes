@@ -4,14 +4,27 @@
     %title Rotten Potatoes!
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css'
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'
     = csrf_meta_tags
 
   %body
-    %h1.title Rotten Potatoes!
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
-
-      = yield
+    %nav.navbar.navbar-default
+      %div.container-fluid
+        %div.navbar-header
+          = link_to "Rotten Potatoes!", '#', class:"navbar-brand"
+        %div.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li{class: ("active" if isTvshow?)}
+              =link_to "TV Shows", tvshows_path
+            %li{class: ("active" if isMovie?)}
+              =link_to 'Movies', movies_path
+    %div.container
+      #main
+        - if flash[:notice]
+          #notice.message= flash[:notice]
+        - elsif flash[:warning]
+          #warning.message= flash[:warning]
+  
+        = yield

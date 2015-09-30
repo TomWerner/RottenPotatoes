@@ -1,0 +1,19 @@
+-#  This file is app/views/tvshows/index.html.haml
+%h1 All TV Shows
+
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Show
+      %th Seasons
+      %th Episodes
+      %th More Info
+  %tbody
+    - @tvshows.each do |tvshow|
+      %tr
+        %td= tvshow.show_name 
+        %td= tvshow.num_seasons
+        %td= tvshow.num_episodes
+        %td= link_to "More about #{tvshow.show_name}", tvshow_path(tvshow)
+
+= button_to 'Add new tv show', new_tvshow_path, class: "btn btn-primary", method: :get

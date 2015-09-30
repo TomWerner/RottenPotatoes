@@ -18,6 +18,41 @@ movies = [{:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
       	  {:title => 'Chicken Run', :rating => 'G', :release_date => '21-Jun-2000'},
   	 ]
 
+Movie.delete_all
 movies.each do |movie|
   Movie.create!(movie)
 end
+
+
+  	 
+tv_shows = [
+    {:show_name => 'Friends'},
+    {:show_name => 'The X-Files'},
+    {:show_name => 'Futurama'}
+    ]
+    
+Episode.delete_all
+Tvshow.delete_all
+tv_shows.each { |show| Tvshow.create!(show) }
+
+friends_episodes = [
+    {:title => 'Episode 1', :season_number => 1, :episode_number => 1, :air_date => '1-Jan-1990'},
+    {:title => 'Episode 2', :season_number => 1, :episode_number => 2, :air_date => '2-Jan-1990'},
+    {:title => 'Episode 3', :season_number => 1, :episode_number => 3, :air_date => '3-Jan-1990'},
+    {:title => 'Episode 4', :season_number => 1, :episode_number => 4, :air_date => '4-Jan-1990'},
+    {:title => 'Episode 5', :season_number => 1, :episode_number => 5, :air_date => '5-Jan-1990'},
+    {:title => 'Episode 6', :season_number => 1, :episode_number => 6, :air_date => '6-Jan-1990'},
+    
+    {:title => 'Episode 7', :season_number => 2, :episode_number => 1, :air_date => '1-Jan-1991'},
+    {:title => 'Episode 8', :season_number => 2, :episode_number => 2, :air_date => '2-Jan-1991'},
+    ]
+show = Tvshow.find_by show_name: 'Friends'
+friends_episodes.each { |episode| show.episodes.create!(episode) }
+
+xfiles_episodes = [
+    {:title => 'Episode 1', :season_number => 1, :episode_number => 1, :air_date => '1-Jan-1990'},
+    {:title => 'Episode 2', :season_number => 2, :episode_number => 1, :air_date => '4-Jan-1990'},
+    {:title => 'Episode 3', :season_number => 3, :episode_number => 1, :air_date => '23-Feb-1995'},
+    ]
+show = Tvshow.find_by show_name: 'The X-Files'
+xfiles_episodes.each { |episode| show.episodes.create!(episode) }

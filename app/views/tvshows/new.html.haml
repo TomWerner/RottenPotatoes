@@ -1,0 +1,13 @@
+%h1 Create New TV Show
+
+= form_tag tvshows_path, class: "form-group" do
+
+  = label :tvshow, :show_name, 'Show Name'
+  = text_field :tvshow, 'show_name', class: "form-control"
+  
+  = label :tvshow, :description, 'Description'
+  = text_field :tvshow, 'description', class: "form-control"
+  
+  %div.padded-input
+  
+  = submit_tag 'Save Changes', class: "btn btn-primary"

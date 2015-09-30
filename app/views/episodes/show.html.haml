@@ -1,0 +1,22 @@
+-# in app/views/episodes/show.html.haml
+
+%h2 Details about #{@episode.title}
+
+%ul#details
+  %li
+    Season:
+    = @episode.season_number
+  %li
+    Episode:
+    = @episode.episode_number
+  %li
+    Aired on:
+    = @episode.formatted_air_date
+
+%h3 Description:
+
+%p#description= @episode.description
+
+= link_to 'Edit', edit_tvshow_episode_path(@tvshow, @episode), class: "btn"
+= link_to 'Delete', tvshow_episode_path(@tvshow, @episode), :method => :delete, :confirm => 'Are you sure?', class:"btn"
+= link_to 'Back to tv show', tvshow_path(@episode.tvshow_id), class: "btn"

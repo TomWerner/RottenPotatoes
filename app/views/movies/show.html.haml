@@ -14,6 +14,7 @@
 
 %p#description= @movie.description
 
-= link_to 'Edit', edit_movie_path(@movie)
-= button_to 'Delete', movie_path(@movie), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Back to movie list', movies_path
+%div.form.btn-group.btn-group-justified
+  = link_to 'Edit', edit_movie_path(@movie), class: "btn btn-default"
+  = link_to 'Delete', movie_path(@movie), :method => :delete, :confirm => 'Are you sure?', class: "btn btn-default"
+  = link_to 'Back to movie list', movies_path, class: "btn btn-danger"

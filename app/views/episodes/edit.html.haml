@@ -1,0 +1,18 @@
+-# edit.html.haml using partial
+
+%h1 Edit Existing Episode
+
+= form_tag tvshow_episode_path, :method => :put, class: "form-group" do
+
+  = label :episode, :title, 'Title'
+  = text_field :episode, 'title', class: "form-control"
+  
+  = label :episode, :description, 'Description'
+  = text_area :episode, 'description', class: "form-control"
+  
+  %div.padded-input
+    = label :episode, :air_date, 'Aired On'
+    %div
+      = date_select :episode, :air_date, class: "form-control"
+
+  = submit_tag 'Update episode Info', class: "btn btn-primary"
