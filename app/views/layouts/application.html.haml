@@ -9,9 +9,16 @@
   %body
     %h1.title Rotten Potatoes!
     #main
+      - if !@current_user
+        = button_to 'Sign up/Login', login_path, :method => :get, :id => 'login'
+      - else
+        %div You are logged in as #{@current_user.user_id}
+        = button_to 'Logout', logout_path, :method => :delete, :id => 'logout'
+        
+    
       - if flash[:notice]
-        #notice.message= flash[:notice]
+        #notice.message.flash_message= flash[:notice]
       - elsif flash[:warning]
-        #warning.message= flash[:warning]
+        #warning.message.flash_message= flash[:warning]
 
       = yield
