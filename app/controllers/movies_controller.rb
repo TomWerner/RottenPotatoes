@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  before_filter :set_current_user
 
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)

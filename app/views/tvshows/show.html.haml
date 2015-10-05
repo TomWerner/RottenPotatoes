@@ -1,0 +1,38 @@
+-# in app/views/movies/show.html.haml
+
+%h2 Details about #{@tvshow.show_name}
+
+%ul#details
+  %li
+    Number of Seasons:
+    = @tvshow.num_seasons
+  %li
+    Number of Shows:
+    =@tvshow.num_episodes
+
+%h3 Description:
+
+%p#description= @tvshow.description
+
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Episode Title
+      %th Season
+      %th Episode
+      %th Air Date
+      %th More Info
+  %tbody
+    - @tvshow.episodes.each do |episode|
+      %tr
+        %td= episode.title 
+        %td= episode.season_number
+        %td= episode.episode_number
+        %td= episode.formatted_air_date
+        %td= link_to "More about #{episode.title}", tvshow_episode_path(@tvshow, episode)
+
+%div.form.btn-group.btn-group-justified
+  = link_to 'Back to TV show list', tvshows_path, class: "btn btn-default"
+  = link_to 'Edit Show', edit_tvshow_path(@tvshow), class: "btn btn-default"
+  = link_to 'Add Episode', new_tvshow_episode_path(@tvshow), class: "btn btn-default"
+  = link_to 'Delete', tvshow_path(@tvshow), class: "btn btn-danger", :method => :delete, :confirm => 'Are you sure?'

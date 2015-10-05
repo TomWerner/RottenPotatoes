@@ -1,0 +1,13 @@
+-# edit.html.haml using partial
+
+%h1 Edit Existing TV Show
+
+= form_tag tvshow_path(@tvshow), :method => :put, :class => "form-group" do
+
+  = label :tvshow, :show_name, 'Show Name'
+  = text_field :tvshow, 'show_name', class: "form-control"
+  
+  = label :tvshow, :description, 'Description'
+  = text_area :tvshow, 'description', class: "form-control description", rows: "5"
+
+  = submit_tag 'Update TV Show Info', class: "btn btn-primary"

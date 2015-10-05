@@ -1,7 +1,7 @@
 -#  This file is app/views/movies/index.html.haml
 %h1 All Movies
 
-%table#movies
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th Movie Title
@@ -13,7 +13,7 @@
       %tr
         %td= movie.title 
         %td= movie.rating
-        %td= movie.release_date
+        %td= movie.release_date.strftime("%B %d, %Y")
         %td= link_to "More about #{movie.title}", movie_path(movie)
 
-= link_to 'Add new movie', new_movie_path
+= button_to 'Add new movie', new_movie_path, class: "btn btn-primary"

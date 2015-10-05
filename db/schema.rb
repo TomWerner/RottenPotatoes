@@ -13,11 +13,31 @@
 
 ActiveRecord::Schema.define(version: 20151003015016) do
 
+  create_table "episodes", force: :cascade do |t|
+    t.integer  "tvshow_id"
+    t.string   "title"
+    t.integer  "season_number"
+    t.integer  "episode_number"
+    t.text     "description"
+    t.datetime "air_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "episodes", ["tvshow_id"], name: "index_episodes_on_tvshow_id"
+
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.string   "rating"
     t.text     "description"
     t.datetime "release_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tvshows", force: :cascade do |t|
+    t.string   "show_name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

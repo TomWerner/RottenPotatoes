@@ -1,0 +1,21 @@
+%h1 Add Episode to #{@tvshow.show_name}
+
+= form_tag tvshow_episodes_path do
+
+  = label :episode, :title, 'Title'
+  = text_field :episode, 'title'
+
+  = label :episode, :season_number, 'Season Number'
+  = text_field :episode, 'season_number', type: 'number'
+
+  = label :episode, :episode_number, 'Episode Number'
+  = text_field :episode, 'episode_number', type: 'number'
+
+  = label :episode, :description, 'Description'
+  = text_field :episode, 'description', optional: true
+
+  = label :episode, :air_date, 'Air Date'
+  = date_select :episode, 'air_date', optional: true
+  
+
+  = submit_tag 'Save Changes'

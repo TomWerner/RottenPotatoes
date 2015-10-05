@@ -1,14 +1,18 @@
 %h1 Create New Movie
 
-= form_tag movies_path do
+= form_tag movies_path class: "form-group" do
 
   = label :movie, :title, 'Title'
-  = text_field :movie, 'title'
+  = text_field :movie, 'title', class: "form-control"
 
-  = label :movie, :rating, 'Rating'
-  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+  %div.padded-input
+    = label :movie, :rating, 'Rating'
+    %div
+      = select :movie, :rating, ['G','PG','PG-13','R','NC-17'], class: "form-control"
+  
+  %div.padded-input
+    = label :movie, :release_date, 'Released On'
+    %div
+      = date_select :movie, :release_date, class: "form-control"
 
-  = label :movie, :release_date, 'Released On'
-  = date_select :movie, :release_date
-
-  = submit_tag 'Save Changes'
+  = submit_tag 'Save Changes', class: "btn btn-primary"

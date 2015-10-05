@@ -4,21 +4,38 @@
     %title Rotten Potatoes!
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css'
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'
     = csrf_meta_tags
+    
+  %nav.navbar.navbar-default
+    %div.container-fluid
+      %div.navbar-header
+        = link_to "Rotten Potatoes!", '#', class:"navbar-brand"
+      %div.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li{class: ("active" if isTvshow?)}
+            =link_to "TV Shows", tvshows_path
+          %li{class: ("active" if isMovie?)}
+            =link_to 'Movies', movies_path
+        %ul.nav.navbar-nav.navbar-right
+          - if !@current_user
+            %li
+              =link_to 'Sign up/Login', login_path, :method => :get, :id => 'login'
+          - else
+            %li
+              =link_to 'Logout', logout_path, :method => :delete, :id => 'logout'
 
   %body
-    %h1.title Rotten Potatoes!
-    #main
-      - if !@current_user
-        = button_to 'Sign up/Login', login_path, :method => :get, :id => 'login'
-      - else
-        %div You are logged in as #{@current_user.user_id}
-        = button_to 'Logout', logout_path, :method => :delete, :id => 'logout'
-        
-    
-      - if flash[:notice]
-        #notice.message.flash_message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message.flash_message= flash[:warning]
-
-      = yield
+    %div.container
+      #main
+        - if !!@current_user
+          %div You are logged in as #{@current_user.user_id}
+            
+        - if flash[:notice]
+          #notice.message= flash[:notice]
+        - elsif flash[:warning]
+          #warning.message= flash[:warning]
+  
+        = yield

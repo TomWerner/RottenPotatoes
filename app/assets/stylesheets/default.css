@@ -17,11 +17,7 @@ a {
   font-weight: bold;
 }
 h1 {
-  color: maroon;
-  font-size: 150%;
-  font-style: italic;
-  display: block;
-  width: 100%;
+  padding-bottom: 7px;
   border-bottom: 1px solid DarkSlateGrey;
 }
 h1.title {
@@ -53,9 +49,16 @@ table#movies th, table#movies td {
   margin: 1em 0;
   padding: 4px;
 }
-form label {
+/*form label {
   display: block;
   line-height: 25px;
   font-weight: bold;
   color: maroon;
+}*/
+.description {
+    margin-bottom: 7px;
+}
+.padded-input {
+  margin: 7px;
+  margin-left: 0px;
 }
